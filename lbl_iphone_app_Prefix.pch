@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'lbl-iphone-app' target in the 'lbl-iphone-app' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
