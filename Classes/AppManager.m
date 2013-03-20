@@ -64,6 +64,37 @@ static AppManager *SharedAppManager;
 	return fetchedObjects;
 }
 
+- (NSMutableArray *) getFieldSets {
+    NSError *error;
+	NSManagedObjectContext *context = self.managedObjectContext;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SavedFieldSet" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+	return [[NSMutableArray alloc] initWithArray:fetchedObjects];
+}
+
+- (void) deleteFieldSet:(SavedFieldSet *)fieldSet {
+    [self.managedObjectContext deleteObject:fieldSet];
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        // Handle the error.
+    }
+}
+
+- (NSString *) getFieldSetString:(SavedFieldSet *)fieldSet {
+    NSMutableString *string = [[NSMutableString alloc] init];
+    NSArray *fields = [[fieldSet fields] allObjects];
+    for(int i=0;i<[fields count];i+=1) {
+        SavedField *field = [fields objectAtIndex:i];
+        [string appendString:field.name];
+        if(i != [fields count]-1) {
+            [string appendString:@","];
+        }
+    }
+    return string;
+}
+
 - (NSString *) dateToString:(NSDate *)date {
 	[dateFormatter setDateFormat:@"MMMM d, YYYY"];
 	return [dateFormatter stringFromDate:date];

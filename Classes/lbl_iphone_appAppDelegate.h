@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "lbl_iphone_appViewController.h"
-#import "AppManager.h"
 
 @interface lbl_iphone_appAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
@@ -19,7 +18,6 @@
 	NSManagedObjectContext *managedObjectContext;
 	NSPersistentStoreCoordinator *persistentStoreCoordinator;
 }
-
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 @property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, strong) IBOutlet lbl_iphone_appViewController *mainViewController;

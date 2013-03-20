@@ -22,13 +22,18 @@
 		E41D4C5F16547D9800C39C1B /* PointsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41D4C5D16547D9800C39C1B /* PointsViewController.xib */; };
 		E41D4D4C16549DD400C39C1B /* PointEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41D4D4A16549DD400C39C1B /* PointEditController.m */; };
 		E41D4D4D16549DD400C39C1B /* PointEditController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41D4D4B16549DD400C39C1B /* PointEditController.xib */; };
+		E431FEA016D58114004E01BA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E431FE9F16D58114004E01BA /* QuartzCore.framework */; };
 		E434F24516BF08F100402B19 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E434F24416BF08F100402B19 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E43F9176165DD8000093E9DC /* lbl_app.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = E43F9175165DD8000093E9DC /* lbl_app.xcdatamodel */; };
 		E43F91B7165DDFCA0093E9DC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43F91B6165DDFCA0093E9DC /* CoreData.framework */; };
 		E44A600F166C2B2A003AD848 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E44A600E166C2B2A003AD848 /* AppManager.m */; };
-		E458AFBF16C332AE00A0823F /* SavedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = E458AFBE16C332AE00A0823F /* SavedLocation.m */; };
-		E458AFC216C332AE00A0823F /* SavedPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E458AFC116C332AE00A0823F /* SavedPoint.m */; };
-		E458AFC516C332AE00A0823F /* SavedField.m in Sources */ = {isa = PBXBuildFile; fileRef = E458AFC416C332AE00A0823F /* SavedField.m */; };
+		E49E543A16D583C100848B4C /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = E431FEA216D5822F004E01BA /* Toast+UIView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E49E543F16D5B15E00848B4C /* SavedFieldsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E49E543D16D5B15E00848B4C /* SavedFieldsView.m */; };
+		E49E544016D5B15E00848B4C /* SavedFieldsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E49E543E16D5B15E00848B4C /* SavedFieldsView.xib */; };
+		E49E544616D5C29B00848B4C /* SavedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = E49E544516D5C29B00848B4C /* SavedLocation.m */; };
+		E49E544C16D5C29C00848B4C /* SavedPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E49E544B16D5C29B00848B4C /* SavedPoint.m */; };
+		E49E544F16D5C6C800848B4C /* SavedField.m in Sources */ = {isa = PBXBuildFile; fileRef = E49E544E16D5C6C800848B4C /* SavedField.m */; };
+		E49E545B16D5C9CD00848B4C /* SavedFieldSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E49E545A16D5C9CD00848B4C /* SavedFieldSet.m */; };
 		E4C4BA9916C4ECEC001D940A /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C4BA8116C4ECEC001D940A /* NSObject+SBJson.m */; };
 		E4C4BA9A16C4ECEC001D940A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C4BA8416C4ECEC001D940A /* SBJsonParser.m */; };
 		E4C4BA9B16C4ECEC001D940A /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C4BA8616C4ECEC001D940A /* SBJsonStreamParser.m */; };
@@ -72,18 +77,26 @@
 		E41D4D4916549DD400C39C1B /* PointEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointEditController.h; sourceTree = "<group>"; };
 		E41D4D4A16549DD400C39C1B /* PointEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointEditController.m; sourceTree = "<group>"; };
 		E41D4D4B16549DD400C39C1B /* PointEditController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointEditController.xib; sourceTree = "<group>"; };
+		E431FE9F16D58114004E01BA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E431FEA116D5822F004E01BA /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Toast+UIView.h"; path = "../Toast+UIView.h"; sourceTree = "<group>"; };
+		E431FEA216D5822F004E01BA /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Toast+UIView.m"; path = "../Toast+UIView.m"; sourceTree = "<group>"; };
 		E434F24416BF08F100402B19 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		E43F9175165DD8000093E9DC /* lbl_app.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = lbl_app.xcdatamodel; sourceTree = "<group>"; };
 		E43F91B6165DDFCA0093E9DC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E44A600D166C2B2A003AD848 /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
 		E44A600E166C2B2A003AD848 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		E458AFB016C311C500A0823F /* CoreLocationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationControllerDelegate.h; sourceTree = "<group>"; };
-		E458AFBD16C332AE00A0823F /* SavedLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedLocation.h; sourceTree = "<group>"; };
-		E458AFBE16C332AE00A0823F /* SavedLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedLocation.m; sourceTree = "<group>"; };
-		E458AFC016C332AE00A0823F /* SavedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedPoint.h; sourceTree = "<group>"; };
-		E458AFC116C332AE00A0823F /* SavedPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedPoint.m; sourceTree = "<group>"; };
-		E458AFC316C332AE00A0823F /* SavedField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedField.h; sourceTree = "<group>"; };
-		E458AFC416C332AE00A0823F /* SavedField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedField.m; sourceTree = "<group>"; };
+		E49E543C16D5B15E00848B4C /* SavedFieldsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedFieldsView.h; sourceTree = "<group>"; };
+		E49E543D16D5B15E00848B4C /* SavedFieldsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedFieldsView.m; sourceTree = "<group>"; };
+		E49E543E16D5B15E00848B4C /* SavedFieldsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedFieldsView.xib; sourceTree = "<group>"; };
+		E49E544416D5C29B00848B4C /* SavedLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedLocation.h; sourceTree = "<group>"; };
+		E49E544516D5C29B00848B4C /* SavedLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedLocation.m; sourceTree = "<group>"; };
+		E49E544A16D5C29B00848B4C /* SavedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedPoint.h; sourceTree = "<group>"; };
+		E49E544B16D5C29B00848B4C /* SavedPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedPoint.m; sourceTree = "<group>"; };
+		E49E544D16D5C6C800848B4C /* SavedField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedField.h; sourceTree = "<group>"; };
+		E49E544E16D5C6C800848B4C /* SavedField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedField.m; sourceTree = "<group>"; };
+		E49E545916D5C9CD00848B4C /* SavedFieldSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedFieldSet.h; sourceTree = "<group>"; };
+		E49E545A16D5C9CD00848B4C /* SavedFieldSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedFieldSet.m; sourceTree = "<group>"; };
 		E4C4BA8016C4ECEC001D940A /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		E4C4BA8116C4ECEC001D940A /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		E4C4BA8216C4ECEC001D940A /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -120,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E431FEA016D58114004E01BA /* QuartzCore.framework in Frameworks */,
 				E434F24516BF08F100402B19 /* CoreBluetooth.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -155,8 +169,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				E49E543B16D583FD00848B4C /* Toast */,
 				E4C4BA7F16C4EC8F001D940A /* JSON */,
-				E434F24416BF08F100402B19 /* CoreBluetooth.framework */,
 				E41D4D681654A8FD00C39C1B /* Models */,
 				E41D4D4E16549DE300C39C1B /* PointEdit */,
 				E41D4C3F1654796B00C39C1B /* Points */,
@@ -188,6 +202,7 @@
 				E4125F0C165AE5DD004121A4 /* ex.png */,
 				E41D4D4B16549DD400C39C1B /* PointEditController.xib */,
 				E41D4C5D16547D9800C39C1B /* PointsViewController.xib */,
+				E49E543E16D5B15E00848B4C /* SavedFieldsView.xib */,
 				2899E5210DE3E06400AC0155 /* lbl_iphone_appViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* lbl_iphone_app-Info.plist */,
@@ -199,6 +214,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E431FE9F16D58114004E01BA /* QuartzCore.framework */,
+				E434F24416BF08F100402B19 /* CoreBluetooth.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -211,6 +228,8 @@
 		E41D4C3E1654792C00C39C1B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E49E543C16D5B15E00848B4C /* SavedFieldsView.h */,
+				E49E543D16D5B15E00848B4C /* SavedFieldsView.m */,
 				28D7ACF60DDB3853001CB0EB /* lbl_iphone_appViewController.h */,
 				E411B05E16AB54AE00D0BF62 /* UIFieldViewController.h */,
 				E411B05F16AB54AE00D0BF62 /* UIFieldViewController.m */,
@@ -240,16 +259,28 @@
 		E41D4D681654A8FD00C39C1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E458AFC316C332AE00A0823F /* SavedField.h */,
-				E458AFC416C332AE00A0823F /* SavedField.m */,
-				E458AFC016C332AE00A0823F /* SavedPoint.h */,
-				E458AFC116C332AE00A0823F /* SavedPoint.m */,
-				E458AFBD16C332AE00A0823F /* SavedLocation.h */,
-				E458AFBE16C332AE00A0823F /* SavedLocation.m */,
+				E49E545916D5C9CD00848B4C /* SavedFieldSet.h */,
+				E49E545A16D5C9CD00848B4C /* SavedFieldSet.m */,
+				E49E544D16D5C6C800848B4C /* SavedField.h */,
+				E49E544E16D5C6C800848B4C /* SavedField.m */,
+				E49E544A16D5C29B00848B4C /* SavedPoint.h */,
+				E49E544B16D5C29B00848B4C /* SavedPoint.m */,
+				E49E544416D5C29B00848B4C /* SavedLocation.h */,
+				E49E544516D5C29B00848B4C /* SavedLocation.m */,
 				E4125F11165AE7A9004121A4 /* InputFieldsModel.h */,
 				E4125F12165AE7A9004121A4 /* InputFieldsModel.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E49E543B16D583FD00848B4C /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				E431FEA216D5822F004E01BA /* Toast+UIView.m */,
+				E431FEA116D5822F004E01BA /* Toast+UIView.h */,
+			);
+			name = Toast;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		E4C4BA7F16C4EC8F001D940A /* JSON */ = {
@@ -345,6 +376,7 @@
 				E4DB0CAC16D310890004B5A2 /* checkbox-checked.png in Resources */,
 				E4DB0CAD16D310890004B5A2 /* checkbox-pressed.png in Resources */,
 				E4DB0CAE16D310890004B5A2 /* checkbox.png in Resources */,
+				E49E544016D5B15E00848B4C /* SavedFieldsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49E543A16D583C100848B4C /* Toast+UIView.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* lbl_iphone_appAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* lbl_iphone_appViewController.m in Sources */,
@@ -364,9 +397,6 @@
 				E43F9176165DD8000093E9DC /* lbl_app.xcdatamodel in Sources */,
 				E44A600F166C2B2A003AD848 /* AppManager.m in Sources */,
 				E411B06016AB54AE00D0BF62 /* UIFieldViewController.m in Sources */,
-				E458AFBF16C332AE00A0823F /* SavedLocation.m in Sources */,
-				E458AFC216C332AE00A0823F /* SavedPoint.m in Sources */,
-				E458AFC516C332AE00A0823F /* SavedField.m in Sources */,
 				E4C4BA9916C4ECEC001D940A /* NSObject+SBJson.m in Sources */,
 				E4C4BA9A16C4ECEC001D940A /* SBJsonParser.m in Sources */,
 				E4C4BA9B16C4ECEC001D940A /* SBJsonStreamParser.m in Sources */,
@@ -379,6 +409,11 @@
 				E4C4BAA216C4ECEC001D940A /* SBJsonTokeniser.m in Sources */,
 				E4C4BAA316C4ECEC001D940A /* SBJsonUTF8Stream.m in Sources */,
 				E4C4BAA416C4ECEC001D940A /* SBJsonWriter.m in Sources */,
+				E49E543F16D5B15E00848B4C /* SavedFieldsView.m in Sources */,
+				E49E544616D5C29B00848B4C /* SavedLocation.m in Sources */,
+				E49E544C16D5C29C00848B4C /* SavedPoint.m in Sources */,
+				E49E544F16D5C6C800848B4C /* SavedField.m in Sources */,
+				E49E545B16D5C9CD00848B4C /* SavedFieldSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +432,7 @@
 				GCC_PREFIX_HEADER = lbl_iphone_app_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "lbl_iphone_app-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "lbl-iphone-app";
 			};
 			name = Debug;
@@ -411,6 +447,7 @@
 				GCC_PREFIX_HEADER = lbl_iphone_app_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "lbl_iphone_app-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "lbl-iphone-app";
 				VALIDATE_PRODUCT = YES;
 			};

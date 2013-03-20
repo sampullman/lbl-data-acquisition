@@ -8,21 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+@class SavedField;
 
 @interface InputFieldsModel : NSObject {
-	NSMutableArray *fieldNames;
+	NSMutableArray *fields;
 	NSString *path;
 }
-@property (nonatomic, strong) NSMutableArray *fieldNames;
+@property (nonatomic, strong) NSMutableArray *fields;
 @property (nonatomic, strong) NSString *path;
 
 + (InputFieldsModel *) getInstance;
 + (NSString *) savedFieldsPath;
 
 - (int) count;
-- (NSString *) get:(int)ind;
+- (NSString *) getName:(int)ind;
+- (NSString *) getValue:(int)ind;
+- (NSString *) getAutoInc:(int)ind;
 - (void) removeField:(int)ind;
-- (void) addField:(NSString *)name;
+- (void) addSavedField:(SavedField *)field;
+- (void) addField:(NSString *)name value:(NSString *)value autoInc:(NSNumber *)autoInc;
+- (void) setToArray:(NSMutableArray *)array;
 - (void) save;
 
 @end

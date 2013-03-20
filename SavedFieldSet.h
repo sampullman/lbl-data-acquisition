@@ -1,5 +1,5 @@
 //
-//  SavedPoint.h
+//  SavedFieldSet.h
 //  lbl-iphone-app
 //
 //  Created by John  Peterson on 2/20/13.
@@ -9,16 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class SavedField, SavedLocation;
+@class SavedField;
 
-@interface SavedPoint : NSManagedObject
+@interface SavedFieldSet : NSManagedObject
 
-@property (nonatomic, retain) NSDate * time;
 @property (nonatomic, retain) NSSet *fields;
-@property (nonatomic, retain) SavedLocation *location;
 @end
 
-@interface SavedPoint (CoreDataGeneratedAccessors)
+@interface SavedFieldSet (CoreDataGeneratedAccessors)
 
 - (void)addFieldsObject:(SavedField *)value;
 - (void)removeFieldsObject:(SavedField *)value;

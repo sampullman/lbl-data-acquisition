@@ -39,7 +39,9 @@
 - (IBAction) addField;
 - (IBAction) removeField:(id)sender;
 
-- (void) insertField:(NSString *)fieldName presetValue:(NSString *)presetValue;
+- (void) removeAllFields;
+- (void) insertField:(NSString *)fieldName presetValue:(NSString *)presetValue
+             autoIncOn:(bool)autoIncOn;
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
 - (void) reposition;
 - (IBAction) hiddenButtonPress;

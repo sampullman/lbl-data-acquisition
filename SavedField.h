@@ -2,7 +2,7 @@
 //  SavedField.h
 //  lbl-iphone-app
 //
-//  Created by John  Peterson on 2/6/13.
+//  Created by John  Peterson on 2/20/13.
 //  Copyright (c) 2013 Berkeley Lab. All rights reserved.
 //
 
@@ -12,7 +12,8 @@
 
 @interface SavedField : NSManagedObject
 
-@property (nonatomic, strong) NSString * name;
-@property (nonatomic, strong) NSString * value;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * value;
+@property (nonatomic, retain) NSNumber * autoInc;
 
 @end

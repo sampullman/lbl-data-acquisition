@@ -7,13 +7,21 @@
 //
 
 #import "lbl_iphone_appViewController.h"
+#import "InputFieldsModel.h"
 #import "PointsViewController.h"
+#import "SavedFieldsView.h"
+#import "SavedPoint.h"
+#import "SavedField.h"
+#import "SavedFieldSet.h"
+#import "CoreLocationControllerDelegate.h"
+#import "Toast+UIView.h"
 
 @implementation lbl_iphone_appViewController
 
 @synthesize gpsLabel;
 @synthesize addFieldButton;
 @synthesize submitButton;
+@synthesize fieldsToLoad;
 
 CLLocation *lastGPSLoc;
 
@@ -90,6 +98,44 @@ CLLocation *lastGPSLoc;
 	[self.navigationController pushViewController:points animated:YES];
 }
 
+- (IBAction) saveFields {
+    NSManagedObjectContext *context = [self.appManager managedObjectContext];
+    SavedFieldSet *fieldSet = (SavedFieldSet *)[NSEntityDescription 
+                                             insertNewObjectForEntityForName:@"SavedFieldSet"
+                                             inManagedObjectContext:context];
+    for(int i=0;i<[self.fields count];i+=1) {
+        SavedField *field = (SavedField *)[NSEntityDescription
+                                           insertNewObjectForEntityForName:@"SavedField"
+                                           inManagedObjectContext:context];
+        field.name = [[self.fields objectAtIndex:i] text];
+        UITextField *value = [self.values objectAtIndex:i];
+        field.value = [value text];
+        field.autoInc = [NSNumber numberWithBool:[[self.autoIncs objectAtIndex:i] isSelected]];
+        [fieldSet addFieldsObject:field];
+    }
+    NSError *error;
+    if (![managedObjectContext save:&error]) {
+        NSLog(@"Problem saving: %@", [error localizedDescription]);
+        [self.view makeToast:@"Field setup not saved." duration:2.5
+                    position:@"top" title:@"Failure"];
+    } else {
+        [self.view makeToast:@"Field setup saved." duration:2.5
+                    position:@"top" title:@"Success!"];
+    }
+    
+}
+
+- (IBAction) loadFields {
+    SavedFieldsView *savedFields = [[SavedFieldsView alloc] 
+                                    initWithNibName:@"SavedFieldsView" bundle:nil];
+    savedFields.delegate = self;
+    [self.navigationController pushViewController:savedFields animated:YES];
+}
+
+
+- (void)reportFieldSet:(SavedFieldsView *)fieldsView fieldSet:(NSMutableArray *)fieldSet {
+    self.fieldsToLoad = fieldSet;
+}
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -102,26 +148,39 @@ CLLocation *lastGPSLoc;
 }
 */
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
+- (void) viewWillAppear:(BOOL)animated {
+    if(self.fieldsToLoad) {
+        [self removeAllFields];
+        [self.values removeAllObjects];
+        [self.fields removeAllObjects];
+        [self.autoIncs removeAllObjects];
+        [self.removeButtons removeAllObjects];
+        [self.inputFieldsModel setToArray:self.fieldsToLoad];
+        self.fieldsToLoad = nil;
+        for(int i=0;i<[self.inputFieldsModel count];i+=1) {
+            [self insertField:[self.inputFieldsModel getName:i] 
+                  presetValue:[self.inputFieldsModel getValue:i]
+                      autoIncOn:[[self.inputFieldsModel getAutoInc:i] boolValue]];
+        }
+        [self reposition];
+        NSLog(@"Loading new fields");
+    }
 }
-*/
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 	lastGPSLoc = nil;
 	self.canRemoveFields = true;
 	self.navigationItem.title = @"Data Entry";
 	UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:@"Points" 
-														style:UIBarButtonItemStylePlain target:self
-																action:@selector(gotoPoints)];
+                                            style:UIBarButtonItemStylePlain target:self
+                                            action:@selector(gotoPoints)];
 	self.navigationItem.rightBarButtonItem = rightBtn;
-	for(int i=0;i<[self.inputFieldsModel	count];i+=1) {
-		[self insertField:[self.inputFieldsModel get:i] presetValue:@""];
-	}
+    for(int i=0;i<[self.inputFieldsModel count];i+=1) {
+        [self insertField:[self.inputFieldsModel getName:i] 
+              presetValue:[self.inputFieldsModel getValue:i]
+                  autoIncOn:[[self.inputFieldsModel getAutoInc:i] boolValue]];
+    }
 	[self reposition];
 	[self.appManager setLocationDelegate:self];
 	[self.appManager.locMgr startUpdatingLocation];

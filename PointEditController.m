@@ -51,7 +51,8 @@
     NSLog(@"num fields: %d", [self.point.fields count]);
 	for(SavedField *field in self.point.fields) {
 		NSLog(@"field: %@, value: %@", field.name, field.value);
-		[self insertField:field.name presetValue:field.value];
+		[self insertField:field.name presetValue:field.value
+                autoIncOn:[field.autoInc boolValue]];
 	}
 	[self reposition];
 }

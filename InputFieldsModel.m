@@ -7,11 +7,11 @@
 //
 
 #import "InputFieldsModel.h"
-
+#import "SavedField.h"
 
 @implementation InputFieldsModel
 
-@synthesize fieldNames;
+@synthesize fields;
 @synthesize path;
 
 static InputFieldsModel *SharedInputFieldsModel;
@@ -25,9 +25,9 @@ static InputFieldsModel *SharedInputFieldsModel;
 
 - (id) init {
 	self.path = [InputFieldsModel savedFieldsPath];
-	self.fieldNames = [[NSMutableArray alloc] initWithContentsOfFile:self.path];
-	if(!self.fieldNames) {
-		self.fieldNames = [[NSMutableArray alloc] init];
+	self.fields = [[NSMutableArray alloc] initWithContentsOfFile:self.path];
+	if(!self.fields) {
+		self.fields = [[NSMutableArray alloc] init];
 	}
 	return [super init];
 }
@@ -43,24 +43,51 @@ static InputFieldsModel *SharedInputFieldsModel;
 }
 
 - (int) count {
-	return [self.fieldNames count];
+	return [self.fields count] / 3;
 }
 
-- (NSString *) get:(int)ind {
-	return [self.fieldNames objectAtIndex:ind];
+- (NSString *) getName:(int)ind {
+	return [self.fields objectAtIndex:ind*3];
+}
+
+- (NSString *) getValue:(int)ind {
+	return [self.fields objectAtIndex:ind*3 + 1];
+}
+
+- (NSString *) getAutoInc:(int)ind {
+	return [self.fields objectAtIndex:ind*3 + 2];
 }
 
 - (void) removeField:(int)ind {
-	[self.fieldNames removeObjectAtIndex:ind];
+	[self.fields removeObjectAtIndex:ind];
+	[self.fields removeObjectAtIndex:ind];
+	[self.fields removeObjectAtIndex:ind];
 	[self save];
 }
 
-- (void) save {
-	[self.fieldNames writeToFile:self.path atomically:YES];
+- (void) setToArray:(NSMutableArray *)array {
+    [self.fields removeAllObjects];
+    for(int i=0;i<[array count];i+=1) {
+        SavedField *field = [array objectAtIndex:i];
+        [self.fields addObject:field.name];
+        [self.fields addObject:field.value];
+        [self.fields addObject:field.autoInc];
+    }
+    [self save];
 }
 
-- (void) addField:(NSString *)name {
-	[self.fieldNames addObject:name];
+- (void) save {
+	[self.fields writeToFile:self.path atomically:YES];
+}
+
+- (void) addSavedField:(SavedField *)field {
+    [self addField:field.name value:field.value autoInc:field.autoInc];
+}
+
+- (void) addField:(NSString *)name value:(NSString *)value autoInc:(NSNumber *)autoInc {
+	[self.fields addObject:name];
+    [self.fields addObject:value];
+    [self.fields addObject:autoInc];
 	[self save];
 }
 

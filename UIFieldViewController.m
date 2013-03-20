@@ -7,7 +7,6 @@
 //
 
 #import "UIFieldViewController.h"
-#import "PointsViewController.h"
 
 @implementation UIFieldViewController
 
@@ -49,8 +48,10 @@ UIAlertView *addFieldAlert;
 }
 
 - (IBAction) addField {
-	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Add Field" message:@"Field Name\n\n\n"
-												   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Add Field" 
+                                        message:@"Field Name\n\n\n"
+                                        delegate:self cancelButtonTitle:@"Cancel"
+                                        otherButtonTitles:@"Ok", nil];
 	[alert setTag:1];
     textField = [[UITextField alloc] init];
     [textField setDelegate:self];
@@ -75,18 +76,19 @@ UIAlertView *addFieldAlert;
 			return;
 		}
 		if (buttonIndex == 1) {
-			[self.inputFieldsModel addField:detailString];
-			[self insertField:detailString presetValue:@""];
+			[self.inputFieldsModel addField:detailString value:@"" autoInc:[NSNumber numberWithBool:false]];
+			[self insertField:detailString presetValue:@"" autoIncOn:false];
 			[self reposition];
 		}
 	}
 }
-	
-- (void) insertField:(NSString *)fieldName presetValue:(NSString *)presetValue {
+
+- (void) insertField:(NSString *)fieldName presetValue:(NSString *)presetValue
+                autoIncOn:(bool)autoIncOn {
 	UILabel *field = [[UILabel alloc] init];
 	field.backgroundColor = [UIColor clearColor];
 	field.text = fieldName;
-	field.frame = CGRectMake(40.0, self.nextFieldY, 90.0, 40.0);
+	field.frame = CGRectMake(40.0, self.nextFieldY-2, 90.0, 40.0);
 	[self.mainView addSubview:field];
     
     UIButton *autoInc = [[UIButton alloc] init];
@@ -97,6 +99,7 @@ UIAlertView *addFieldAlert;
     [autoInc setImage:[UIImage imageNamed:@"checkbox-pressed.png"] forState:UIControlStateHighlighted];
     [autoInc setTag:[self.removeButtons count]];
     autoInc.frame = CGRectMake(140, self.nextFieldY, 40, 40);
+    [autoInc setSelected:autoIncOn];
     [self.mainView addSubview:autoInc];
     
 	UITextField *value = [[UITextField alloc]init];
@@ -133,16 +136,20 @@ UIAlertView *addFieldAlert;
     //int tag = [(UIButton *)sender tag];
     [sender setSelected:![sender isSelected]];
 }
+
+- (void) removeAllFields {
+    self.nextFieldY = [AppManager getFieldYInit];
+    for(int i=0;i<[self.removeButtons count];i+=1) {
+        [[self.values objectAtIndex:i] removeFromSuperview];
+        [[self.fields objectAtIndex:i] removeFromSuperview];
+        [[self.removeButtons objectAtIndex:i] removeFromSuperview];
+        [[self.autoIncs objectAtIndex:i] removeFromSuperview];
+    }
+}
 	
 - (IBAction) removeField:(id)sender {
-    self.nextFieldY = [AppManager getFieldYInit];
+    [self removeAllFields];
     int tag = [(UIButton *)sender tag];
-    for(int i=0;i<[self.removeButtons count];i+=1) {
-        [[self.values objectAtIndex:tag] removeFromSuperview];
-        [[self.fields objectAtIndex:tag] removeFromSuperview];
-        [[self.removeButtons objectAtIndex:tag] removeFromSuperview];
-        [[self.autoIncs objectAtIndex:tag] removeFromSuperview];
-    }
     [self.inputFieldsModel removeField:tag];
     [self.values removeObjectAtIndex:tag];
     [self.fields removeObjectAtIndex:tag];

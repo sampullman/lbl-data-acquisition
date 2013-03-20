@@ -23,12 +23,16 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-
+    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	// Set the view controller as the window's root view controller and display.
     //self.window.rootViewController = self.navigationController;
-    [self.window addSubview: self.mainViewController.view];
-    [self.window addSubview:self.navigationController.view];
+    self.mainViewController = [[lbl_iphone_appViewController alloc]
+                            initWithNibName:@"lbl_iphone_appViewController" bundle:nil];
+    self.navigationController = [[UINavigationController alloc]
+                                 initWithRootViewController:self.mainViewController];
+    [self.window setRootViewController:self.navigationController];
     [self.window makeKeyAndVisible];
+    
 	self.mainViewController.managedObjectContext = self.managedObjectContext;
 	AppManager *appManager = [AppManager getInstance];
 	[appManager registerCoreData:self.managedObjectModel context:self.managedObjectContext

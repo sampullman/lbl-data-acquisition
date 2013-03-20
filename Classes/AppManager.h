@@ -11,6 +11,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CoreLocationControllerDelegate.h"
 #import "SavedLocation.h"
+#import "SavedFieldSet.h"
+#import "SavedField.h"
 
 @class SBJsonParser;
 @class SBJsonWriter;
@@ -41,6 +43,9 @@
 				storeCoordinator:(NSPersistentStoreCoordinator *)storeCoordinator;	
 - (NSString *)dateToString:(NSDate *)date;
 - (NSMutableArray *) getPoints;
+- (NSMutableArray *) getFieldSets;
+- (void) deleteFieldSet:(SavedFieldSet *)fieldSet;
+- (NSString *) getFieldSetString:(SavedFieldSet *)fieldSet;
 - (void) setLocationDelegate:(id)delegate;
 - (NSString *) getLocationString:(SavedLocation *)location;
 - (void) sendPoints;

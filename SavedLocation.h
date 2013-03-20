@@ -2,7 +2,7 @@
 //  SavedLocation.h
 //  lbl-iphone-app
 //
-//  Created by John  Peterson on 2/6/13.
+//  Created by John  Peterson on 2/20/13.
 //  Copyright (c) 2013 Berkeley Lab. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 @interface SavedLocation : NSManagedObject
 
-@property (nonatomic, strong) NSNumber * longitude;
-@property (nonatomic, strong) NSNumber * latitude;
+@property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * latitude;
 
 @end
